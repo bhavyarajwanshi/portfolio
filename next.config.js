@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/hokage-terminal', // Replace with your exact GitHub repository name
+  basePath: '/portfolio', // Maps assets precisely to your sub-folder repository name
   images: {
     unoptimized: true,
   },
