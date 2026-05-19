@@ -26,7 +26,7 @@ Type 'sumfetch' to display summary dashboard.
 // Redirection
 export const repo = async (args: string[]): Promise<string> => {
   window.open(`${config.repo}`);
-  return 'Opening Github repository...';
+  return 'Opening Hokage Terminal repository...';
 };
 
 // About
@@ -35,8 +35,7 @@ export const about = async (args: string[]): Promise<string> => {
 Welcome to my workspace terminal!
 More about me:
 'sumfetch' - short telemetry summary.
-'resume'   - my latest engineering resume.
-'notes'    - my cloud-native engineering handbook.`;
+'resume'   - my latest engineering resume.`;
 };
 
 export const resume = async (args: string[]): Promise<string> => {
@@ -52,24 +51,36 @@ export const projects = async (args: string[]): Promise<string> => {
 - <b>Infrastructure Analytics Dashboard</b>: Designed a unified visibility layout tracking performance and platform health metrics.`;
 };
 
-// Sumfetch Profile Dashboard
+// Sumfetch Profile Dashboard with ASCII Side-by-Side Art
 export const sumfetch = async (args: string[]): Promise<string> => {
-  return `⚙️ <b>${config.name}</b> @ infra-ops
-----------------------------------------
-🚀 <b>Role</b>: DevOps & Observability Engineer
-☁️ <b>Focus</b>: Kubernetes, Cloud Optimization, Enterprise Telemetry
-🏢 <b>Current</b>: Platform Engineering Core (Bosch)
-🛠️ <b>Stack</b>: Docker, k3s, Terraform, Helm, Bash, Git, Python
-📓 <b>Notes</b>: Type 'notes' to view technical handbooks
-🚀 <b>Topology</b>: Type 'arch' to view metrics data flow`;
-};
+  const currentDateTime = new Date().toLocaleString('en-US', { 
+    hour12: true,
+    timeZoneName: 'short'
+  });
 
-// Donate
-export const donate = async (args: string[]): Promise<string> => {
-  return `Thank you for your interest! 
-While this interface runs completely on open-source pipelines, you can support my engineering work here:
-- Paypal  : https://paypal.me/bhavyarajwanshi
-- Patreon : https://patreon.com/bhavyarajwanshi
+  return `
+                    .II.                    ⚙️ <b>${config.name}</b> @ tsukuyomi-core
+                   ,llll,                   ---------------------------------------
+                  .llllll.                  🚀 <b>Role</b>        : DevOps & Observability Engineer
+                 .llllllll.                 ☁️ <b>Focus</b>       : Kubernetes, Cloud Optimization, SRE
+                 il!!!!!!li                 🏢 <b>Current</b>     : Platform Engineering Core (Bosch)
+    ;IIlllIIi;;. :il!!!!li:..;;iIIlllII;    🛠️ <b>Stack</b>       : Docker, k3s, Terraform, Helm, Python
+     IllIIlll!l,llll,  ,llll,l!lllIIllI     🌀 <b>System Time</b> : ${currentDateTime}
+     .Ill:   ..,l;.;IIII;.;l,..   :llI.     ---------------------------------------
+       illI.       ,;ii;,       .Illi        <b>Email</b>       : ${config.email}
+        ;l!!i        ;;        ;!!l;         <b>GitHub</b>      : github.com/${config.social.github}
+          :,Il:.   ;IIII;   .:lI,:           <b>LinkedIn</b>    : linkedin.com/in/${config.social.linkedin}
+          :,Il:iI: ;IIII; :Ii:lI,:.         ---------------------------------------
+        ;l!!i.;iIIi  ;;  iIIi;.i!!l;        👁️ <i>tsukuyomi-core status: online</i>
+       illl!!l;.:II.    .II;.;l!!llli       ❯_ <b>System</b>      : > H O K A G E T E R M
+     .Illlll!!I:l;.,    ,.;l:I!!lllllI.     
+     Illlllll!!,llli    ;lll,l!lllllllI     
+    ;IIlllIIi;;. :il.   li:..;;iiIlllII;    
+                 il!;  :!li                 
+                 .lll  lll.                 
+                  .llIill.                  
+                   ,llll,                   
+                    .II.                    
 `;
 };
 
@@ -95,21 +106,6 @@ export const google = async (args: string[]): Promise<string> => {
   return `Searching google for ${args.join(' ')}...`;
 };
 
-export const duckduckgo = async (args: string[]): Promise<string> => {
-  window.open(`https://duckduckgo.com/?q=${args.join(' ')}`);
-  return `Searching duckduckgo for ${args.join(' ')}...`;
-};
-
-export const bing = async (args: string[]): Promise<string> => {
-  window.open(`https://bing.com/search?q=${args.join(' ')}`);
-  return `Wow, really? You are using bing for ${args.join(' ')}?`;
-};
-
-export const reddit = async (args: string[]): Promise<string> => {
-  window.open(`https://www.reddit.com/search/?q=${args.join(' ')}`);
-  return `Searching reddit for ${args.join(' ')}...`;
-};
-
 // Typical linux commands
 export const echo = async (args: string[]): Promise<string> => {
   return args.join(' ');
@@ -124,7 +120,7 @@ export const ls = async (args: string[]): Promise<string> => {
 };
 
 export const cd = async (args: string[]): Promise<string> => {
-  return `Directory navigation locked. Access folders directly by typing 'notes [category]' or 'arch'.`;
+  return `Directory navigation locked. Access shortcuts directly via interactive commands.`;
 };
 
 export const date = async (args: string[]): Promise<string> => {
@@ -135,16 +131,12 @@ export const vi = async (args: string[]): Promise<string> => {
   return `Woah, you still use 'vi'? Just try 'vim'.`;
 };
 
-export const vim = async (args: string[]): Promise<string> => {
-  return `'vim' is classic, but have you tried 'nvim'?`;
-};
-
-export const nvim = async (args: string[]): Promise<string> => {
-  return `'nvim' is configurations heaven. Excellent taste.`;
-};
-
-export const emacs = async (args?: string[]): Promise<string> => {
-  return `M-x butterfly`;
+export const Certifications = async (args?: string[]): Promise<string> => {
+  return `Google Cloud Associate Cloud Engineer
+          Google Cloud Cloud Digital Leader
+          Godot 101 – Game Engine Foundations
+          Google Cloud Generative AI Leader
+          `;
 };
 
 export const sudo = async (args?: string[]): Promise<string> => {
@@ -155,72 +147,13 @@ export const sudo = async (args?: string[]): Promise<string> => {
 // Banner
 export const banner = (args?: string[]): string => {
   return `
-█████        ███                       ███████████                                   
-░░███        ░░░                       ░█░░░███░░░█                                   
- ░███        ████  █████ █████  ██████ ░   ░███  ░   ██████  ████████  █████████████  
- ░███       ░░███ ░░███ ░░███  ███░░███    ░███     ███░░███░░███░░███░░███░░███░░███ 
- ░███        ░███  ░███  ░███ ░███████     ░███    ░███████  ░███ ░░░  ░███ ░███ ░███ 
- ░███      █ ░███  ░░███ ███  ░███░░░      ░███    ░███░░░   ░███      ░███ ░███ ░███ 
- ███████████ █████  ░░█████   ░░██████     █████   ░░██████  █████     █████░███ █████
-░░░░░░░░░░░ ░░░░░    ░░░░░     ░░░░░░     ░░░░░     ░░░░░░  ░░░░░     ░░░░░ ░░░ ░░░░░ 
+    ▗▄▄▖ ▗▖ ▗▖ ▗▄▖ ▗▖  ▗▖▗▖  ▗▖▗▄▖     ▗▄▄▖  ▗▄▖    ▗▖▗▖ ▗▖ ▗▄▖ ▗▖  ▗▖ ▗▄▄▖▗▖ ▗▖▗▄▄▄▖
+    ▐▌ ▐▌▐▌ ▐▌▐▌ ▐▌▐▌  ▐▌ ▝▚▞▘▐▌ ▐▌    ▐▌ ▐▌▐▌ ▐▌   ▐▌▐▌ ▐▌▐▌ ▐▌▐▛▚▖▐▌▐▌   ▐▌ ▐▌  █  
+    ▐▛▀▚▖▐▛▀▜▌▐▛▀▜▌▐▌  ▐▌  ▐▌ ▐▛▀▜▌    ▐▛▀▚▖▐▛▀▜▌   ▐▌▐▌ ▐▌▐▛▀▜▌▐▌ ▝▜▌ ▝▀▚▖▐▛▀▜▌  █  
+    ▐▙▄▞▘▐▌ ▐▌▐▌ ▐▌ ▝▚▞▘   ▐▌ ▐▌ ▐▌    ▐▌ ▐▌▐▌ ▐▌▗▄▄▞▘▐▙█▟▌▐▌ ▐▌▐▌  ▐▌▗▄▄▞▘▐▌ ▐▌▗▄█▄▖
 
 Type 'help' to see the list of available operational commands.
 Type 'sumfetch' to display system summary dashboard.
-Type 'repo' or click <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.repo}" target="_blank">here</a></u> for the GitHub source code.
+Type 'repo' or click <u><a class="text-light-blue dark:text-dark-blue underline" href="${config.repo}" target="_blank">here</a></u> for the Hokage Terminal source code.
 `;
-};
-
-// Engineering Handbooks Subsystem
-export const notes = async (args: string[]): Promise<string> => {
-  if (args.length === 0) {
-    return `Available Engineering Handbooks:
-- kubernetes    : Local k3s sandbox cluster setup & manifests
-- observability : Multi-cloud API integration & telemetry
-- finops        : Log-ingestion usage-based chargeback models
-
-Usage: type 'notes [category]' (e.g., 'notes kubernetes')`;
-  }
-
-  const category = args[0].toLowerCase();
-  if (category === 'kubernetes') {
-    return `[KUBERNETES HANDBOOK]
-* Sandbox Environment: Constructed a local testing sandbox running Rancher Desktop (k3s).
-* Declarative Orchestration: Authored native Kubernetes YAML manifests (Deployments, Services) to handle container scheduling.
-* CLI Management: Streamlined state audits and pod debugging workflows via k9s and kubectl inside the terminal.`;
-  }
-  if (category === 'observability') {
-    return `[OBSERVABILITY PIPELINES]
-* Telemetry Streams: Engineered secure API connections between Icinga and multi-cloud nodes utilizing AWS IAM credentials.
-* Alert Aggregation: Re-architected integration links across Grafana, Icinga, and New Relic stacks to drop MTTR by 35%.`;
-  }
-  if (category === 'finops') {
-    return `[FINOPS & METRIC OPTIMIZATION]
-* Chargeback Auditing: Tracked tenant logging metrics to build usage-based cost-allocation spreadsheets.
-* Cost Avoidance: Truncated dead or duplicate data pipelines to slash total SaaS billing overhead by ~15%.`;
-  }
-
-  return `Handbook category '${category}' not found. Type 'notes' to see all categories.`;
-};
-
-// Visual Network Topology
-export const arch = async (args: string[]): Promise<string> => {
-  return `[INFRASTRUCTURE TELEMETRY TOPOLOGY]
-
-  +-----------------------+      +------------------------+
-  |    AWS Cloud Layers   |      |   Azure Virtual Mach   |
-  |  (IAM Credentials)    |      |  (Auth Token Access)   |
-  +-----------+-----------+      +-----------+------------+
-              |                              |
-              +--------------+---------------+
-                             | (REST API Stream)
-                             v
-               +---------------------------+
-               |  Icinga Aggregator Core   |
-               +-------------+-------------+
-                             |
-                             v
-               +---------------------------+
-               | Grafana / Datadog Stack   |
-               |   [35% MTTR Reduction]    |
-               +---------------------------+`;
 };

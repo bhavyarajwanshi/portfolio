@@ -1,34 +1,39 @@
 import React from 'react';
-import { commandExists } from '.././utils/commandExists';
-import { shell } from '.././utils/shell';
-import { handleTabCompletion } from '.././utils/tabCompletion';
+import { commandExists } from '../utils/commandExists';
+import { shell } from '../utils/shell';
+import { handleTabCompletion } from '../utils/tabCompletion';
 import { Ps1 } from './Ps1';
 
 export const Input = ({
-  inputVal,        // Mapped to parent state hook
-  setInputVal,     // Mapped to parent state hook
+  inputVal,        
+  setInputVal,     
   history,
   setHistory,
 }) => {
-  // Keeping track of input state references internally for navigation
   const [lastCommandIndex, setLastCommandIndex] = React.useState(0);
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const onSubmit = async (event: React.KeyboardEvent<HTMLInputElement>) => {
-    // Defensive check: filter out raw initialization strings, only map actual past execution objects
+    // Safely filter history items. Only parse objects, ignore raw banner strings.
     const commands: string[] = history
-      .map((entry: any) => typeof entry === 'object' ? entry.command : null)
+      .map((entry: any) => typeof entry === 'object' && entry !== null ? entry.command : null)
       .filter((cmd: string | null): cmd is string => !!cmd);
 
+    // Ctrl + C: Safe terminal line cancellation
     if (event.key === 'c' && event.ctrlKey) {
       event.preventDefault();
+      // Append a blank execution line so it visually skips to the next prompt like a real terminal
+      setHistory((prev: any) => [...prev, { command: inputVal, output: '' }]);
       setInputVal('');
       setLastCommandIndex(0);
+      return;
     }
 
+    // Ctrl + L: Clear terminal screen
     if (event.key === 'l' && event.ctrlKey) {
       event.preventDefault();
       setHistory([]);
+      return;
     }
 
     if (event.key === 'Tab') {
@@ -40,10 +45,9 @@ export const Input = ({
       event.preventDefault();
       setLastCommandIndex(0);
       
-      // Pass the active input pipeline down to the central execution engine
       await shell(inputVal, setHistory, () => setHistory([]), setInputVal);
+      setInputVal(''); // Clean out prompt input after submission
       
-      // Smooth dynamic scrolling down to the bottom viewport boundary
       setTimeout(() => {
         window.scrollTo({
           top: document.body.scrollHeight,
@@ -96,8 +100,8 @@ export const Input = ({
         type="text"
         className={`bg-transparent focus:outline-none flex-grow font-mono ${
           commandExists(inputVal) || inputVal === ''
-            ? 'text-[#ff0033] font-bold' // Valid commands turn Sharingan Crimson
-            : 'text-zinc-500'            // Untyped text turns stealth gray
+            ? 'text-[#ff0033] font-bold' 
+            : 'text-zinc-500'            
         }`}
         value={inputVal}
         onChange={onChange}
