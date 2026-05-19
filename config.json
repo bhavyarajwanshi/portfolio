@@ -1,39 +1,39 @@
 {
-  "readmeUrl": "https://raw.githubusercontent.com/cveinnt/cveinnt/master/README.md",
-  "title": "LiveTerm",
-  "name": "John Doe",
-  "ascii": "liveterm",
+  "readmeUrl": "https://raw.githubusercontent.com/bhavyarajwanshi/bhavyarajwanshi/master/README.md",
+  "title": "Bhavya | Shadow Ops Terminal",
+  "name": "Bhavya Rajwanshi",
+  "ascii": "itachi",
   "social": {
-    "github": "github",
-    "linkedin": "linkedin"
+    "github": "bhavyarajwanshi",
+    "linkedin": "bhavya-rajwanshi"
   },
-  "email": "contact@email.com",
-  "ps1_hostname": "liveterm",
-  "ps1_username": "visitor",
-  "repo": "https://github.com/Cveinnt/LiveTerm",
-  "resume_url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Resume.pdf",
+  "email": "bhavyarajwanshi99@gmail.com",
+  "ps1_hostname": "tsukuyomi-core",
+  "ps1_username": "bhavya",
+  "repo": "https://github.com/bhavyarajwanshi/bhavyarajwanshi.github.io",
+  "resume_url": "/Bhavya_Resume.pdf",
   "donate_urls": {
-    "paypal": "https://paypal.me/cveinnt",
-    "patreon": "https://patreon.com/cveinnt"
+    "paypal": "https://paypal.me/bhavyarajwanshi",
+    "patreon": "https://patreon.com/bhavyarajwanshi"
   },
   "colors": {
     "light": {
-      "background": "#FBF1C9",
-      "foreground": "#3C3836",
-      "yellow": "#D79921",
+      "background": "#F5F5F5",
+      "foreground": "#262626",
+      "yellow": "#CA2124",
       "green": "#98971A",
       "gray": "#7C6F64",
       "blue": "#458588",
       "red": "#CA2124"
     },
     "dark": {
-      "background": "#2E3440",
-      "foreground": "#E5E9F0",
-      "yellow": "#5E81AC",
+      "background": "#08080a",
+      "foreground": "#e4e4e7",
+      "yellow": "#ff0033",
       "green": "#A3BE8C",
-      "gray": "#88C0D0",
-      "blue": "#EBCB8B",
-      "red": "#BF616A"
+      "gray": "#1a1a24",
+      "blue": "#93c5fd",
+      "red": "#ff0033"
     }
   }
 }
