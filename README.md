@@ -20,8 +20,6 @@ But when you try to push boundaries, deployment loops rarely play nice. I ended 
 What started as a simple configuration project turned into a great deep-dive into compiler flags, static asset distribution logic, and cloud automation.
 
 👉 Give it a spin here: https://bhavyarajwanshi.github.io/portfolio/
-📂 Dive into the code matrix: [PASTE YOUR REPOSITORY LINK HERE]
-
 Huge credit to Vincent Wu for providing an incredible open-source baseline layer! 
 
 #NextJS #TypeScript #GitHubActions #CICD #DevOps #SoftwareEngineering #WebDevelopment #Portfolio #ProblemSolving
