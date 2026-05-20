@@ -39,3 +39,9 @@ div#__next > div {
 ::-webkit-scrollbar-thumb:hover {
   background: #ff8037;
 }
+/* Add a responsive media utility hook at the bottom of the file */
+@media (max-width: 640px) {
+  body, input, textarea, pre {
+    font-size: 11px !important; /* Drops text size slightly on mobile phones */
+  }
+}

@@ -3,15 +3,15 @@ import * as bin from './bin';
 
 export const shell = async (
   command: string,
-  setHistory: React.Dispatch<React.SetStateAction<any[]>>, // Fixed type mapping to expect array updates
-  clearHistory: () => void,
-  setCommand: React.Dispatch<React.SetStateAction<string>>,
+  setHistory: React.Dispatch<React.SetStateAction<any[]>>,
+  setCommand: React.Dispatch<React.SetStateAction<string>>, // Cleaned up positional arguments
 ) => {
   const args = command.trim().split(' ');
   const baseCommand = args[0].toLowerCase();
 
+  // Handle Native 'clear' command string directly
   if (baseCommand === 'clear') {
-    clearHistory();
+    setHistory([]);
     setCommand('');
     return;
   }
