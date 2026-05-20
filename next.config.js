@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // CRITICAL FIX: Forces Next.js to export pages as 'index.html' files inside separate folders
-  trailingSlash: true, 
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },
@@ -12,7 +11,12 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  distDir: 'out',
+  
+  // REMOVE distDir: 'out' from here entirely! 
+  // Next 12's 'next export' command naturally creates the 'out/' folder automatically.
+
+  basePath: '/portfolio',
+  assetPrefix: '/portfolio',
 }
 
 module.exports = nextConfig
