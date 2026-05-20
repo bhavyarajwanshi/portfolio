@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  trailingSlash: true,
+  // CRITICAL FIX: Forces Next.js to export pages as 'index.html' files inside separate folders
+  trailingSlash: true, 
   images: {
     unoptimized: true,
   },
@@ -11,8 +12,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // CRITICAL STEP FOR NEXT 12 ACTION RUNNERS:
-  // Forces the build engine to output the compiler assets directly to the 'out' directory
   distDir: 'out',
 }
 
