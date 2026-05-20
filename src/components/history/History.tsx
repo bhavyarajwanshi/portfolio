@@ -1,6 +1,7 @@
 import React from 'react';
 import { History as HistoryInterface } from './interface';
 import { Ps1 } from '../Ps1';
+import { Typewriter } from '../Typewriter'; // Import the new animator utility
 
 export const History: React.FC<{ history: Array<any> }> = ({
   history,
@@ -8,6 +9,9 @@ export const History: React.FC<{ history: Array<any> }> = ({
   return (
     <>
       {history.map((entry: any, index: number) => {
+        // Track if this item is the absolute latest addition to the terminal array
+        const isLatestEntry = index === history.length - 1;
+
         // Safe check: If the history item is just a raw string (like our system initialization banner)
         if (typeof entry === 'string') {
           return (
@@ -34,8 +38,15 @@ export const History: React.FC<{ history: Array<any> }> = ({
             <p
               className="whitespace-pre-wrap mb-4 mt-1 font-mono"
               style={{ lineHeight: 'normal' }}
-              dangerouslySetInnerHTML={{ __html: entry?.output || '' }}
-            />
+            >
+              {isLatestEntry ? (
+                /* Dynamic progressive reveal for the active command response */
+                <Typewriter text={entry?.output || ''} speed={2} />
+              ) : (
+                /* Instant render fallback for historical rows */
+                <span dangerouslySetInnerHTML={{ __html: entry?.output || '' }} />
+              )}
+            </p>
           </div>
         );
       })}

@@ -1,5 +1,4 @@
 {
-  "readmeUrl": "https://raw.githubusercontent.com/bhavyarajwanshi/bhavyarajwanshi/master/README.md",
   "title": "Bhavya | Shadow Ops Terminal",
   "name": "Bhavya Rajwanshi",
   "ascii": "itachi",
@@ -12,28 +11,15 @@
   "ps1_username": "bhavya",
   "repo": "https://github.com/bhavyarajwanshi",
   "resume_url": "/Bhavya_Resume.pdf",
-  "donate_urls": {
-    "paypal": "https://paypal.me/bhavyarajwanshi",
-    "patreon": "https://patreon.com/bhavyarajwanshi"
-  },
   "colors": {
-    "light": {
-      "background": "#F5F5F5",
-      "foreground": "#262626",
-      "yellow": "#CA2124",
-      "green": "#98971A",
-      "gray": "#7C6F64",
-      "blue": "#458588",
-      "red": "#CA2124"
-    },
     "dark": {
-      "background": "#08080a",
-      "foreground": "#e4e4e7",
-      "yellow": "#ff0033",
-      "green": "#A3BE8C",
-      "gray": "#1a1a24",
-      "blue": "#93c5fd",
-      "red": "#ff0033"
+      "background": "#050000",
+      "foreground": "#ffffff",
+      "yellow": "#ff0000",
+      "green": "#ffffff",
+      "gray": "#1a0000",
+      "blue": "#ff0033",
+      "red": "#ff0000"
     }
   }
 }
