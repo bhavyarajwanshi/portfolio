@@ -65,29 +65,87 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>{config.title}</title>
-      </Head>
+  <title>{config.title}</title>
+  {/* Hardcoded Embedded Sharingan Base64 - bypasses the local asset file cache completely */}
+  <link 
+    rel="icon" 
+    type="image/svg+xml" 
+    href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23b91c1c'/><circle cx='50' cy='50' r='32' fill='none' stroke='%23000000' stroke-width='3'/><path d='M 50 18 C 35 30, 35 45, 50 50 C 65 45, 65 30, 50 18 Z' fill='%23000000'/><path d='M 22 66 C 36 54, 50 58, 50 50 C 50 42, 36 30, 22 66 Z' fill='%23000000'/><path d='M 78 66 C 64 54, 50 58, 50 50 C 50 42, 64 30, 78 66 Z' fill='%23000000'/><circle cx='50' cy='50' r='10' fill='%23000000'/><circle cx='50' cy='50' r='3' fill='%23b91c1c'/></svg>" 
+  />
+</Head>
 
+      {/* Main Page Canvas Backdrop */}
       <div 
-        className="p-6 font-mono text-sm overflow-hidden min-h-screen bg-[#08080a] text-[#e4e4e7] selection:bg-zinc-800"
+        className="min-h-screen bg-[#050507] p-4 md:p-8 flex items-center justify-center font-mono select-none"
         onClick={() => {
           document.getElementById('prompt')?.focus();
         }}
       >
-        <div 
-          ref={containerRef}
-          className="max-w-4xl mx-auto h-[92vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-zinc-800"
-        >
-          {/* Historical Command Streams */}
-          <History history={history} />
+        {/* HARDWARE WINDOW CONSOLE CARD CONTAINER */}
+        <div className="w-full max-w-5xl h-[88vh] bg-[#09090b] border border-zinc-800 rounded-xl shadow-2xl flex flex-col overflow-hidden">
           
-          {/* Main Active Input Pipeline Prompt Component */}
-          <Input
-            inputVal={inputVal}
-            setInputVal={setInputVal}
-            setHistory={setHistory}
-            history={history}
-          />
+          {/* SIMULATED SYSTEM WINDOW BAR */}
+          <div className="bg-[#111113] border-b border-zinc-900 px-4 py-3 flex items-center justify-between text-xs">
+            {/* Native Window Action Nodes */}
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/40"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/40"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/40"></div>
+            </div>
+            
+            {/* Custom Infrastructure Metadata with Natively Inlined Sharingan Vector */}
+            <div className="flex items-center space-x-2 font-semibold tracking-wider text-[11px]">
+              <svg 
+                viewBox="0 0 100 100" 
+                className="w-4 h-4 animate-[spin_10s_linear_infinite]"
+              >
+                {/* Outermost Crimson Iris Base */}
+                <circle cx="50" cy="50" r="46" fill="#b91c1c" />
+                {/* Core Obsidian Ring Foundation */}
+                <circle cx="50" cy="50" r="32" fill="none" stroke="#000000" strokeWidth="3" />
+                
+                {/* Eternal Mangekyou Symmetric Blades */}
+                <path d="M 50 18 C 35 30, 35 45, 50 50 C 65 45, 65 30, 50 18 Z" fill="#000000" />
+                <path d="M 22 66 C 36 54, 50 58, 50 50 C 50 42, 36 30, 22 66 Z" fill="#000000" />
+                <path d="M 78 66 C 64 54, 50 58, 50 50 C 50 42, 64 30, 78 66 Z" fill="#000000" />
+                
+                {/* Center Tomoe Node Eye Aperture */}
+                <circle cx="50" cy="50" r="10" fill="#000000" />
+                <circle cx="50" cy="50" r="3" fill="#b91c1c" />
+              </svg>
+              
+              <span style={{ color: '#e4e4e7' }} className="font-bold">
+                TSUKUYOMI SECURE SHELL v2.4.0
+              </span>
+            </div>
+            
+            {/* Cluster Node Environment Tag */}
+            {/* FIXED: Added explicit inline text style here to force bright crimson visibility */}
+            <div 
+              style={{ color: '#ff0033' }} 
+              className="text-[10px] bg-zinc-900 px-2 py-0.5 rounded border border-zinc-800 font-bold tracking-tight"
+            >
+              SHADOW-MODE
+            </div>
+          </div>
+
+          {/* INTERNAL VIEWPORT PORTAL EXECUTION STREAM */}
+          <div 
+            ref={containerRef}
+            className="flex-1 p-6 overflow-y-auto overflow-x-hidden text-[#e4e4e7] bg-[#08080a] pr-2 scrollbar-thin scrollbar-thumb-zinc-800"
+          >
+            {/* Historical Command Streams */}
+            <History history={history} />
+            
+            {/* Main Active Input Pipeline Prompt Component */}
+            <Input
+              inputVal={inputVal}
+              setInputVal={setInputVal}
+              setHistory={setHistory}
+              history={history}
+            />
+          </div>
+          
         </div>
       </div>
     </>

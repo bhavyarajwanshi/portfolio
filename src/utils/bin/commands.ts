@@ -259,3 +259,15 @@ Type 'help' to see the list of available operational commands.
 Type 'sumfetch' to display system summary dashboard.
 `;
 };
+export const near = async (args: string[]): Promise<string> => {
+  return `
+📍 [NODE LOCATION DETAILS]
+--------------------------------------------------
+🌐 Target Node Cluster : tsukuyomi-core-asia
+🏢 Active Environment  : shadow-mode (authenticated)
+🗺️ Geolocation Matrix : Bengaluru, India [12.9716° N, 77.5946° E]
+📡 Network Proximity   : Near edge terminal gateway proxy
+
+Execute 'sumfetch' or 'help' to review structural monitoring dashboards.
+`;
+};
