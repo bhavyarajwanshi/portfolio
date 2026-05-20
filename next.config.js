@@ -1,16 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'export', // Required for GitHub static pages deployment
+  // If you are using Next 12, static exports use 'next export' command, 
+  // but if you have trailing slash or image configs, let's keep it clean:
+  trailingSlash: true,
   images: {
-    unoptimized: true, // Prevents image optimization errors during static export
+    unoptimized: true,
   },
   typescript: {
-    // This bypasses the runner's outdated compiler check completely
+    // This tells Next.js to completely ignore TypeScript compilation checks during production builds
     ignoreBuildErrors: true,
   },
   eslint: {
-    // Prevents formatting warnings from stopping the build pipeline
+    // This ignores ESLint rules so warnings don't throw exit flags
     ignoreDuringBuilds: true,
   },
 }
