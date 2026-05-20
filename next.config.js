@@ -1,19 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',        // Compiles app into static assets
-  basePath: '/portfolio',  // Routes assets to your repo subdirectory
+  reactStrictMode: true,
+  output: 'export', // Required for GitHub static pages deployment
   images: {
-    unoptimized: true,     // Bypasses server-side image scaling requirements
-  },
-  eslint: {
-    // 🛡️ CRITICAL: This allows production builds to successfully complete 
-    // even if your project has minor linting/formatting warnings
-    ignoreDuringBuilds: true,
+    unoptimized: true, // Prevents image optimization errors during static export
   },
   typescript: {
-    // 🛡️ CRITICAL: This prevents minor type-casting mismatches from blocking your site deployment
+    // This bypasses the runner's outdated compiler check completely
     ignoreBuildErrors: true,
-  }
-};
+  },
+  eslint: {
+    // Prevents formatting warnings from stopping the build pipeline
+    ignoreDuringBuilds: true,
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
