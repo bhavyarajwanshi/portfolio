@@ -271,3 +271,30 @@ export const near = async (args: string[]): Promise<string> => {
 Execute 'sumfetch' or 'help' to review structural monitoring dashboards.
 `;
 };
+export const ifconfig = async (args: string[]): Promise<string> => {
+  let guestIP = '192.168.1.42'; // Fallback IP if they use a heavy ad-blocker
+  
+  try {
+    // Fetch the client's public IP from a reliable open API
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+    if (data.ip) {
+      guestIP = data.ip;
+    }
+  } catch (error) {
+    // Silent catch so the terminal doesn't crash if the API fails
+  }
+
+  return `
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet ${guestIP}  netmask 255.255.255.0  broadcast 255.255.255.255
+        inet6 fe80::bhavya:cloud:native:sre  prefixlen 64  scopeid 0x20<link>
+        ether 42:ac:11:00:00:02  txqueuelen 1000  (Ethernet)
+        RX packets 421099  bytes 65477912 (65.4 MB)
+        TX packets 280451  bytes 32146087 (32.1 MB)
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        loop  txqueuelen 1000  (Local Loopback)
+`;
+};
