@@ -155,6 +155,98 @@ export const achievements = async (args?: string[]): Promise<string> => {
 `;
 };
 
+// Live System Monitoring Process Readout (Monochromatic Standard)
+export const top = async (args: string[]): Promise<string> => {
+  const loadAvg = (Math.random() * (1.80 - 0.45) + 0.45).toFixed(2);
+  const memUsed = Math.floor(Math.random() * (6200 - 5800) + 5800);
+  const cpuK3s = (Math.random() * (12.5 - 4.1) + 4.1).toFixed(1);
+  const cpuDd = (Math.random() * (5.2 - 1.8) + 1.8).toFixed(1);
+
+  return `\n⚙️ <b>[TSUKUYOMI-CORE SYSTEM METRICS]</b>
+--------------------------------------------------------------------------------------
+Tasks: <b>42 total</b>,   1 running,  41 sleeping,   0 stopped,   0 zombie
+%Cpu(s): <b> ${cpuK3s}%</b> us,  <b>1.2%</b> sy,  0.0% ni, <b>91.4%</b> id,  0.0% wa,  0.0% hi
+MiB Mem : <b>16384.0 total</b>,  9842.1 free,  <b>${memUsed}.9 used</b>,  6541.0 buff/cache
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 1024 bhavya    20   0 4128412 842104 124212 S   <b>${cpuK3s}</b>  5.1   12:44.12 k3s-engine
+ 2048 bhavya    20   0 2104812 512104  94212 S   <b>${cpuDd}</b>  3.1    4:18.05 datadog-agent
+ 4096 bhavya    20   0  842104 124212  42112 S   0.8  0.8    0:55.21 icinga2-core
+ 8192 bhavya    20   0   42112   4212   1212 R   0.2  0.0    0:00.04 htop-telemetry
+--------------------------------------------------------------------------------------
+👁️ <i>Type 'top' or 'htop' again to refresh active resource utilization threads.</i>
+`;
+};
+
+// High-Fidelity Colorized Interactive Telemetry View
+export const htop = async (args: string[]): Promise<string> => {
+  const cpuVal1 = Math.floor(Math.random() * (45 - 20) + 20);
+  const cpuVal2 = Math.floor(Math.random() * (60 - 35) + 35);
+  const memVal = Math.floor(Math.random() * (75 - 55) + 55);
+
+  const drawBar = (percent: number, colorClass: string) => {
+    const totalBars = 30;
+    const filledBars = Math.round((percent / 100) * totalBars);
+    const emptyBars = totalBars - filledBars;
+    return `[<span class="${colorClass}">${'|'.repeat(filledBars)}</span>${'.'.repeat(emptyBars)} <span class="text-white">${percent}%</span>]`;
+  };
+
+  return `
+  <span class="text-green-400">1</span>  ${drawBar(cpuVal1, 'text-green-500 font-bold')}   <span class="text-green-400">Tasks:</span> 42 total, 1 running
+  <span class="text-green-400">2</span>  ${drawBar(cpuVal2, 'text-blue-500 font-bold')}   <span class="text-green-400">Load average:</span> 0.52 0.41 0.35 
+  <span class="text-green-400">Mem</span>${drawBar(memVal, 'text-yellow-500 font-bold')}  <span class="text-green-400">Uptime:</span> 14 days, 03:22:11
+
+  <span class="bg-neutral-800 text-white px-1 font-bold">  PID USER      PRI  NI  VIRT   RES   SHR S  CPU% MEM%   TIME+  Command         </span>
+ 1024 bhavya     20   0 4128M  842M  124M S  ${(cpuVal1 * 0.2).toFixed(1)}  5.1  12:44.12 k3s-engine
+ 2048 bhavya     20   0 2104M  512M   94M S  ${(cpuVal2 * 0.1).toFixed(1)}  3.1   4:18.05 datadog-agent
+ 4096 bhavya     20   0  842M  124M   42M S   0.8  0.8   0:55.21 icinga2-core
+ 8192 bhavya     20   0  412M   42M   12M R   0.2  0.2   0:00.04 htop-dashboard
+
+  <span class="text-neutral-400 font-bold">F1</span>Help  <span class="text-neutral-400 font-bold">F2</span>Setup <span class="text-neutral-400 font-bold">F3</span>Search <span class="text-neutral-400 font-bold">F4</span>Filter <span class="text-neutral-400 font-bold">F5</span>Tree  <span class="text-neutral-400 font-bold">F6</span>Sort  <span class="text-neutral-400 font-bold">F9</span>Kill  <span class="text-neutral-400 font-bold">F10</span>Quit
+`;
+};
+
+// Virtual File Inspection Engine
+export const cat = async (args: string[]): Promise<string> => {
+  if (args.length === 0) {
+    return "Usage: cat [filename]. Example: cat k3s_deployment.yaml";
+  }
+
+  const filename = args[0].toLowerCase();
+
+  if (filename === 'k3s_deployment.yaml') {
+    return `\n<span class="text-neutral-500"># Source: local k3s testing environment sandbox</span>
+<span class="text-blue-400">apiVersion</span>: apps/v1
+<span class="text-blue-400">kind</span>: Deployment
+<span class="text-blue-400">metadata</span>:
+  <span class="text-blue-400">name</span>: tsukuyomi-core-deployment
+  <span class="text-blue-400">labels</span>:
+    <span class="text-blue-400">app</span>: telemetry-aggregator
+<span class="text-blue-400">spec</span>:
+  <span class="text-blue-400">replicas</span>: 3
+  <span class="text-blue-400">selector</span>:
+    <span class="text-blue-400">matchLabels</span>:
+      <span class="text-blue-400">app</span>: telemetry-aggregator
+  <span class="text-blue-400">template</span>:
+    <span class="text-blue-400">metadata</span>:
+      <span class="text-blue-400">labels</span>:
+        <span class="text-blue-400">app</span>: telemetry-aggregator
+    <span class="text-blue-400">spec</span>:
+      <span class="text-blue-400">containers</span>:
+      - <span class="text-blue-400">name</span>: aggregator-backend
+        <span class="text-blue-400">image</span>: bhavya/tsukuyomi-aggregator:latest
+        <span class="text-blue-400">ports</span>:
+        - <span class="text-blue-400">containerPort</span>: 8080
+`;
+  }
+
+  if (filename === 'crypto_bank_ms.pdf' || filename === 'bhavya_resume.pdf' || filename === 'iaoc_dashboard.pbi') {
+    return `Cannot dump raw binary execution blocks into text viewport. Please use the interactive '<span class="text-cyan-400">resume</span>' or shortcut linking modules to manage structural document downloads.`;
+  }
+
+  return `cat: ${args[0]}: No such file or directory in records system context.`;
+};
+
 // Streamlined Banner Output
 export const banner = (args?: string[]): string => {
   return `

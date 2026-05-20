@@ -28,7 +28,10 @@ function App({ Component, pageProps }) {
           content="initial-scale=1.0, width=device-width, viewport-fit=cover"
         />
       </Head>
-      <Component {...pageProps} />
+      {/* Visual layout wrapper forcing a smooth terminal boot fade animation */}
+      <div className="animate-fade-in transition-opacity duration-500 ease-out opacity-100">
+        <Component {...pageProps} />
+      </div>
     </>
   );
 }
